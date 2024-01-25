@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import MyState from '../../Context/myState';
 import { myContext } from '../../Context/myContext';
 
@@ -6,11 +6,33 @@ import { myContext } from '../../Context/myContext';
 // This is card is for admin's
 
 const UploadCard = () => {
-    const { name , fileSave , setImageFile } = useContext(myContext);
+    const {fileSave , setImageFile } = useContext(myContext);
+    const [img,setImg] = useState('data:image/jpeg;base64,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');
+    const onImageChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+          setImg(URL.createObjectURL(event.target.files[0]));
+        }
+       }
 
   return (
-    <div className=' absolute left-0 right-0'>
-        <div className='w-5 h-5'></div>
+    <div className='bodyUploadCard absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4' >
+        <div className=' w-[450px] overflow-hidden h-[600px] rounded-lg border-l-cyan-200 border-solid border '>
+             <div className='w-full h-64 border-b border-cyan-200'>
+                <label htmlFor="fileInput1">
+                    <div className='w-full h-64'>
+                        <h1 className =' absolute text-[#ff2f2f] text-2xl mt-10 ml-9'  >click for select img's</h1>
+                        <img src={img} alt="" className=' w-[450px] h-64' />
+                    </div>
+                </label>
+                <input type="file" onChange={onImageChange} className=' opacity-0' name="" id="fileInput1" />
+             </div>
+             <div className=''>
+                <input type="text" className='w-full h-[40px] px-8 bg-[#1f1f1f] placeholder:text-white outline-none ' placeholder='Price'/>
+                <input type="text" className='w-full h-[40px] px-8 bg-[#505050] placeholder:text-white outline-none ' placeholder='Titel name'/>
+                <textarea minLength='300' className=' w-full px-8 bg-[#181718] placeholder:text-white outline-none ' placeholder='Discription'/>
+             </div>
+             <button onClick={{fileSave,setImageFile}} className='w-full fixed bg-slate-400 bottom-0  py-6 rounded-b-lg'>Click for post</button>
+        </div>
     </div>
   )
 }
